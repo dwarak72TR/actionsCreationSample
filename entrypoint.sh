@@ -1,3 +1,5 @@
+#!/bin/sh -l
+
 #required parameters
 vid=$1
 vkey=$2
