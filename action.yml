@@ -1,0 +1,29 @@
+name: 'Veracode Static Scan Get Report pdf'
+description: 'Get Veracode Application scanned reports'
+
+inputs:
+  appid:  # id of input
+    description: 'appid'
+    required: true
+  api_call_name:  # id of input
+    description: 'version'
+    required: true
+  vid:  # id of input
+    description: 'vid'
+    required: true
+  vkey:  # id of input
+    description: 'vkey'
+    required: true
+
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.appid }}
+    - ${{ inputs.api_call_name }}     
+    - ${{ inputs.vid }}
+    - ${{ inputs.vkey }}
+    - ${{ inputs.createsandbox}}
+    
+    
