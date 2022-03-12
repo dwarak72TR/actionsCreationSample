@@ -1,10 +1,12 @@
 #!/bin/sh -l
 
 #required parameters
-vid=$1
-vkey=$2
-api_call_name=$3
-appid=$4
+
+appid=$1
+api_call_name=$2
+vid=$3
+vkey=$4
+
 
 echo "Required Information"
 echo "===================="
@@ -15,14 +17,14 @@ echo "vkey: $vkey"
 
 if [ "$vid" ]
 then
-echo "vid: ***"
+echo "vid: *************"
 else
 echo "vid:"
 fi
 
 if [ "$vkey" ]
 then
-echo "vkey: ***"
+echo "vkey: ************"
 else
 echo "vkey:"
 fi
@@ -33,7 +35,7 @@ then
         exit 1
 fi
 
-echo "Application is $appid.But I don't knwo the name"
+echo "Application is $appid.But I don't knwo the name.$api_call_name"
 # echo "#!/bin/sh -l" > runJava.sh
 # echo ""
 # echo "java -jar vosp-api-wrappers-java-<version #>.jar \\
