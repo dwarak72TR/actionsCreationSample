@@ -43,7 +43,7 @@ echo "java -jar VeracodeJavaAPI.jar \\
         -vid \"$vid\" \\
         -vkey \"$vkey\" \\
         -action \"$api_call_name\" \\
-        -appname \"$appid\" \\ " >> runJava.sh
+        -appid \"$appid\" \\ " >> runJava.sh
 
 
 javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/maven-metadata.xml | grep latest |  cut -d '>' -f 2 | cut -d '<' -f 1)
