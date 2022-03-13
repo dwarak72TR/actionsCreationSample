@@ -29,6 +29,8 @@ else
 echo "vkey:"
 fi
 
+if $api_call_name == "summaryreport"
+then
 if [ -z "$appid" ] || [ -z "$vid" ] || [ -z "$vkey" ] || [ -z "$api_call_name"]
 then
         echo "Missing required parameter. Please check that all required parameters are set"
@@ -54,3 +56,5 @@ curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vos
 chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
+output=$(grep -c 'build_id=' output.xml)
+echo $output
