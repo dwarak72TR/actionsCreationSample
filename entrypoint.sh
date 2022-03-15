@@ -61,6 +61,7 @@ build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11)
 echo $build_id
 version=$(awk -F 'analysis_type=' '{print $2}' output.xml)
 echo $version
+status=$(awk -F 'status=' '{print $2}' $version)
 # echo $result | head -c 10
 
 # awk -F 'build_id=' '{print $2}' output.xml
