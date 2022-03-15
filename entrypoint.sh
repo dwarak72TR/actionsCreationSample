@@ -57,8 +57,8 @@ chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
-sudo apt-get install -y xml-core
-build_id=$(sudo xmllint --xpath 'string(//buildinfo/build/@build_id)' output.xml )
+apt-get install libxml2-utils
+build_id=$(xmllint --xpath 'string(//buildinfo/build/@build_id)' output.xml )
  
 
 echo $build_id
