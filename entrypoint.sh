@@ -56,4 +56,5 @@ curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vos
 chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
+cat output.xml
 awk -F 'build_id=' '{print $2}' output.xml
