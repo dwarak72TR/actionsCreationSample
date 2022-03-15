@@ -29,8 +29,8 @@ else
 echo "vkey:"
 fi
 
-if $api_call_name == "summaryreport"
-then
+# if $api_call_name == "summaryreport"
+# then
 if [ -z "$appid" ] || [ -z "$vid" ] || [ -z "$vkey" ] || [ -z "$api_call_name"]
 then
         echo "Missing required parameter. Please check that all required parameters are set"
@@ -54,4 +54,4 @@ echo "javawrapperversion: $javawrapperversion"
 
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
 cat runJava.sh
-./runJava.sh > output.xml
+./runJava.sh
