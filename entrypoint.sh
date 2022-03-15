@@ -57,4 +57,5 @@ chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
-cat //buildinfo/build/property[@name="build_id"]/@value' | xmllint --shell output.xml | awk -F 'build_id=' '{print $2}' output.xml
+awk -F 'build_id=' '{print $2}' output.xml
+# awk -F 'build_id=' '{print $2}' output.xml
