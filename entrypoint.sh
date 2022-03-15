@@ -58,7 +58,8 @@ cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
 sudo apt-get install -y xml-core
-build_id=$(xml sel -t -v "/Context/Resource/@username" output.xml)
+build_id=$(xmllint --xpath "//buildinfo/build/@build_id" output.xml )
+ 
 
 echo $build_id
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11)
