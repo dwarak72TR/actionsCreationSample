@@ -59,9 +59,9 @@ cat runJava.sh
 cat output.xml
 build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11)
 echo $build_id
-version=$(awk -F 'analysis_type=' '{print $2}' output.xml)
+version=$(awk -F 'analysis_type=' '{print $2}' output.xml | tail -c 30)
 echo $version
-status=$(awk 'status=' '{print $2}' $version)
+# status=$(awk 'status=' '{print $2}' $version)
 # echo $result | head -c 10
 
 # awk -F 'build_id=' '{print $2}' output.xml
