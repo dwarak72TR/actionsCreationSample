@@ -57,3 +57,5 @@ chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml 
+myvar=$(echo 'cat //buildinfo/build/property[@name="build_id"]/@value' | xmllint --shell output.xml | awk -F'[="]' '!/>/{print $(NF-1)}')
+echo "$myvar"
