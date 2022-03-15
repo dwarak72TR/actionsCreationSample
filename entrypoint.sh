@@ -57,7 +57,7 @@ chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
-build_id=$(sed -n 's/.[^ ]* build_id="([^"])./\1/p'  output.xml)
+build_id=$(sed -n 's+.[^ ]* build_id="([^"])./\1/p'  output.xml)
 
 echo $build_id
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11)
