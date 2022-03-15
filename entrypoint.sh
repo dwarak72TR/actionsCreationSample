@@ -59,7 +59,7 @@ cat runJava.sh
 cat output.xml
 # sudo su 
 # apt-get install libxml2-utils
-build_id=$(cat output.xml | grep build_id |  )
+build_id=$(cat output.xml | grep build_id)
  
 
 echo $build_id
