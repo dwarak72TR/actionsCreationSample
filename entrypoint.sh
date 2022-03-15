@@ -59,4 +59,5 @@ cat runJava.sh
 cat output.xml
 result=$(awk -F 'build_id=' '{print $2}' output.xml)
 echo ${result[0]}
+head -c -10 result
 # awk -F 'build_id=' '{print $2}' output.xml
