@@ -57,5 +57,6 @@ chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
-awk -F 'build_id=' '{print $2}' output.xml
+result = awk -F 'build_id=' '{print $2}' output.xml
+echo $result
 # awk -F 'build_id=' '{print $2}' output.xml
