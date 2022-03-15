@@ -56,5 +56,5 @@ curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vos
 chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
-myvar=cat '//buildinfo/build/property[@name="build_id"]/@value | xmllint --shell output.xml | awk -F'[="]' '!/>/{print $(NF-1)}'
+myvar=cat //buildinfo/build/property[@name="build_id"]/@value | xmllint --shell output.xml 
 echo "$myvar"
