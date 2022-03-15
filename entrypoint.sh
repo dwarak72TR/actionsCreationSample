@@ -57,10 +57,14 @@ chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
-build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11)
+build_id= $(cat //buildinfo/build/property[@name="build_id"]/@value output.xml)
 echo $build_id
-version=$(awk -F 'analysis_type=' '{print $2}' output.xml | tail -c 30)
-echo $version
+# build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11)
+# echo $build_id
+# status=$(awk -F 'analysis_type=' '{print $2}' output.xml | tail -c 30)
+# echo $version
+
+
 # status=$(awk 'status=' '{print $2}' $version)
 # echo $result | head -c 10
 
