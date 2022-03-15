@@ -57,7 +57,8 @@ chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
-build_id= $(cat //buildinfo/build/property[@name="build_id"]/@value output.xml)
+build_id= $(xml sel -t -v "/buildinfo/build/@build_id" output.xml)
+
 echo $build_id
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11)
 # echo $build_id
