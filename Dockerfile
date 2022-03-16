@@ -1,8 +1,8 @@
 FROM openjdk:latest
-    
+FROM python:3.7
 #RUN yum install curl
 
-RUN yum install -y libxml2-utils
+RUN sudo apt-get update -y
 # RUN apt-get install -y python
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
