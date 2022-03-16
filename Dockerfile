@@ -1,7 +1,7 @@
 FROM debian:9.5-slim
     
 #RUN yum install curl
-RUN sudo apt-get install openjdk-8-jdk
+RUN apt-get install openjdk-8-jdk
 RUN  apt -y upgrade
 
 
