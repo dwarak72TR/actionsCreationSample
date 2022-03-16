@@ -59,17 +59,16 @@ cat runJava.sh
 cat output.xml
 # sudo su 
 # apt-get install libxml2-utils
-build_id=$(cat output.xml | grep build_id| sed 's/build_id//g')
+build_id=$(python /scripts/getBuildId.py)
+
+build_id=$(cat output.xml | grep build_id | sed 's/build_id//g')
  
 
 echo $build_id
-# build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11)
+
+# build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
 # echo $build_id
 # status=$(awk -F 'analysis_type=' '{print $2}' output.xml | tail -c 30)
 # echo $version
 
 
-# status=$(awk 'status=' '{print $2}' $version)
-# echo $result | head -c 10
-
-# awk -F 'build_id=' '{print $2}' output.xml
