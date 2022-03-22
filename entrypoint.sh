@@ -57,17 +57,12 @@ chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
-# sudo su 
-# apt-get install libxml2-utils
 
-# build_id=$(cat output.xml | grep build_id | sed 's/build_id//g')
- 
 
-# echo $build_id
-version=$(javac --version)
+buildinfo=$('cat //*/@Id' | xmllint --shell output.xml | awk -F\" 'NR % 2 == 0 { print $2 }')
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
-# echo $build_id
+echo $build_id
 # status=$(awk -F 'analysis_type=' '{print $2}' output.xml | tail -c 30)
-echo $version
+
 
 
