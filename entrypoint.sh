@@ -59,7 +59,7 @@ cat runJava.sh
 cat output.xml
 
 
-buildinfo=$('cat cat //buildinfo/build/property[@name="build_id"]/@value' | xmllint --shell output.xml | awk -F\" 'NR % 2 == 0 { print $2 }')
+buildinfo=$('cat //buildinfo/build/property[@name="build_id"]/@value' | xmllint --shell output.xml | awk -F\" 'NR % 2 == 0 { print $2 }')
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
 echo $build_id
 # status=$(awk -F 'analysis_type=' '{print $2}' output.xml | tail -c 30)
