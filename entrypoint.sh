@@ -59,7 +59,6 @@ cat runJava.sh
 cat output.xml
 # sudo su 
 # apt-get install libxml2-utils
-build_id=$(python /scripts/getBuildId.py)
 
 build_id=$(cat output.xml | grep build_id | sed 's/build_id//g')
  
