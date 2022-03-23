@@ -1,6 +1,7 @@
 FROM openjdk:latest
 
-RUN python
+RUN sudo apt-get install python
+RUN sudo apt-get install python3
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x entrypoint.sh
