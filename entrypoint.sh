@@ -58,6 +58,8 @@ cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
 
+$(xmllint --xpath "string(/results/common/account/@account-id)" output.xml)
+
 
 buildinfo=$('cat //buildinfo/build/property[@name="build_id"]/@value' | xmllint --shell output.xml | awk -F\" 'NR % 2 == 0 { print $2 }')
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
