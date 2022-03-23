@@ -1,4 +1,4 @@
-FROM rappdw/docker-java-python:openjdk1.8.0_171-python3.6.6
+FROM dwaraks/testveracode:v1
 
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
