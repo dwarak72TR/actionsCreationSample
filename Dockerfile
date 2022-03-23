@@ -1,4 +1,4 @@
-FROM dwaraks/testveracode:v2
+FROM dwaraks/testveracode:v3
 
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
