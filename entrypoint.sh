@@ -64,12 +64,13 @@ echo $value
 
 filename='output.xml'
 n=1
-# while read line; do
+while read line; do
 # # reading each line
-line=$(grep 'build_id=' $filename)
+if $line == "build_id=" then
 echo $line
-# n=$((n+1))
-# done < $filename
+fi
+n=$((n+1))
+done < $filename
 
 
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
