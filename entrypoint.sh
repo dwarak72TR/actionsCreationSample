@@ -58,8 +58,16 @@ cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
 
-value=$(cat output.xml)
+file=output.xml
 echo $value
+
+if [[ -f $file ]] ; then    
+    read -p "build_id=" word
+    rest=$(grep "build_id=" output.xml)
+    echo $rest
+else
+    echo "The file $file does not exist."
+fi
 
 
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
