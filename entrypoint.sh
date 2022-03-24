@@ -66,7 +66,9 @@ filename='output.xml'
 n=1
 while read line; do
 # reading each line
-echo "Line No. $n : $line"
+if grep -q "build_id" "$Filename"; then
+  echo "Line No. $n : $line" # SomeString was found
+fi
 n=$((n+1))
 done < $filename
 
