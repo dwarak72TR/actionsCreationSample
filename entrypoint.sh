@@ -58,11 +58,9 @@ cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
 
-pythonv=$(python --version)
-xml=$(xmllint --version)
+value=$(cat output.xml)
+echo $value
 
-echo $pythonv
-echo $xml
 
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
 
