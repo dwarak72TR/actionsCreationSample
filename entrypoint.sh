@@ -57,8 +57,13 @@ chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
-build_id=$(python --version)
-echo $build_id
+
+pythonv=$(python --version)
+xml=$(xmllint --version)
+
+echo $pythonv
+echo $xml
+
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
 
 # status=$(awk -F 'analysis_type=' '{print $2}' output.xml | tail -c 30)
