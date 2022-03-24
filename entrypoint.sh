@@ -61,13 +61,14 @@ cat output.xml
 file=output.xml
 echo $value
 
-if [[ -f $file ]] ; then    
-    read -p "build_id=" word
-    rest=$(grep "build_id=" output.xml)
-    echo $rest
-else
-    echo "The file $file does not exist."
-fi
+
+filename='output.xml'
+n=1
+while read line; do
+# reading each line
+echo "Line No. $n : $line"
+n=$((n+1))
+done < $filename
 
 
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
