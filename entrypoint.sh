@@ -59,7 +59,7 @@ cat getbuildid.sh
 
 
 
-sed -i s+""xmlns=".*\""+" "+g output.xml
+sed -i s+"xmlns=\".*\""+" "+g output.xml
 cat output.xml
 build_id=$(xmllint --xpath 'string(//buildinfo/@build_id)' output.xml)
 echo "Build_id: $build_id"
@@ -81,7 +81,7 @@ ls -lrt
 # cat summaryreport.xml
 
 # sed -i s+"xmlns=\"https://www.veracode.com/schema/reports/export/1.0\""+" "+g summaryreport.xml
-sed -i s+"xmlns=".*\"" "+" "+g summaryreport.xml
+sed -i s+"xmlns=\".*\""+" "+g summaryreport.xml
 score=$(xmllint --xpath 'string(//summaryreport/static-analysis/@score)' summaryreport.xml)
 echo "Score = $score"
 
