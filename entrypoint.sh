@@ -72,11 +72,11 @@ done < $file
 
 
 
-res=$(cat output.xml | tail -n +3 | head -n -4)
+res=$(cat output.xml | head -n -4)
 echo $res
-#myvar=$(xmllint --xpath 'string(//buildinfo/build/@build_id)' output.xml)
-# echo "result="
-# echo $myvar
+myvar=$(xmllint --xpath 'string(//buildinfo/build/@build_id)' output.xml)
+echo "result="
+echo $myvar
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
 
 # status=$(awk -F 'analysis_type=' '{print $2}' output.xml | tail -c 30)
