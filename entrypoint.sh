@@ -57,7 +57,7 @@ cat getbuildid.sh
 ./getbuildid.sh > output.xml
  # build info is saved in output.xml
 
-sed -i s+"xmlns=".*\"" "+" "+g output.xml
+sed -i s+"xmlns=".*\""+" "+g output.xml
 
 # sed -i s+"xmlns=(\".*?\")"+" "+g output.xml
 cat output.xml
