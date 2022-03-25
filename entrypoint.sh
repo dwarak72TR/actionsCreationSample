@@ -58,28 +58,22 @@ cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
 
+myvar=$(xmllint --xpath 'string(//buildinfo/build/@build_id)' output.xml)
+echo "result="
+echo $myvar
+
 file=output.xml
 echo $value
 
 
-filename='output.xml'
-n=1
-# while read line; do
-# # # reading each line
-# if $line == "build_id=" then
-# echo $line
-# fi
-# n=$((n+1))
-# # done < $filename
-# line=$(awk -F 'build_id=' '{print $2}' output.xml)
-# echo $line
-# l=$(xmllint --version)
-# # xpath 'string(/buildinfo/build)' output.xml)
-# echo $l
-myvar=$(xmllint --xpath 'string(//buildinfo/build/@build_id)' output.xml)
-echo "result="$myvar
-#cat $filename | grep 'build_id='
-
+file="output.xml" 
+  
+i=1  
+while read line; do    
+#Reading each line  
+echo "Line No. $i : $line"  
+i=$((i+1))  
+done < $file  
 
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
 
