@@ -76,8 +76,8 @@ echo $line
 # l=$(xmllint --version)
 # # xpath 'string(/buildinfo/build)' output.xml)
 # echo $l
-myvar=$(echo 'cat //buildinfo/build/property[@name="build_id"]/@value' | xmllint --shell output.xml | awk -F'[="]' '!/>/{print $(NF-1)}')
-echo $myvar
+myvar=$(xmllint --xpath 'string(//buildinfo/build/@build_id)' output.xml)
+echo "result=",$myvar
 #cat $filename | grep 'build_id='
 
 
