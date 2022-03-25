@@ -75,7 +75,9 @@ cat getscore.sh
 ls -lrt
 cat summaryreport.xml
 
-
+sed -i s+"xmlns="https://www.veracode.com/schema/reports/export/1.0"\""+" "+g summaryreport.xml
+score=$(xmllint --xpath 'string(//summaryreport/static-analysis/@score)' summaryreport.xml)
+echo $score
 # echo "before"
 # cat output2.xml
 # sed -i s+"</buildinfo>"+" "+g output2.xml
