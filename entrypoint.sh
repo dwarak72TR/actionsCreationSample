@@ -76,9 +76,9 @@ res=$(cat output.xml | tail -n +3)
 echo $res > output2.xml
 ls -lrt
 cat output2.xml
-# myvar=$(xmllint --xpath 'string(//build/@build_id)' output2.xml)
-# echo "result="
-# echo $myvar
+build_id=$(xmllint --xpath 'string(//build/@build_id)' output2.xml)
+echo "result="
+echo $build_id
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
 
 # status=$(awk -F 'analysis_type=' '{print $2}' output.xml | tail -c 30)
