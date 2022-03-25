@@ -56,36 +56,37 @@ curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vos
 chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh > output.xml
-cat output.xml
-
-file=output.xml
-
-
-file="output.xml" 
-  
-i=1  
-while read line; do    
-#Reading each line  
-echo "Line No. $i : $line"  
-i=$((i+1))  
-done < $file  
-
-
+cat output.xml # build info is saved in output.xml
 
 res=$(cat output.xml | tail -n +3)
 echo $res > output2.xml
-ls -lrt
-echo "before"
-cat output2.xml
-sed -i s+"</buildinfo>"+" "+g output2.xml
-echo "after removing"
-cat output2.xml
-build_id=$(xmllint --xpath 'string(//build/@build_id)' output2.xml)
-echo "result="
+
+build_id=$(xmllint --noout --xpath 'string(//buildinfo/@build_id)' output.xml)
+
+# echo "before"
+# cat output2.xml
+# sed -i s+"</buildinfo>"+" "+g output2.xml
+# echo "after removing"
+# cat output2.xml
+# build_id=$(xmllint --xpath 'string(//build/@build_id)' output2.xml)
+echo "Build_id ="
 echo $build_id
+
+
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
 
 # status=$(awk -F 'analysis_type=' '{print $2}' output.xml | tail -c 30)
 
 
 
+# file=output.xml
+
+
+# file="output.xml" 
+  
+# i=1  
+# while read line; do    
+# #Reading each line  
+# echo "Line No. $i : $line"  
+# i=$((i+1))  
+# done < $file  
