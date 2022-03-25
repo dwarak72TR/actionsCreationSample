@@ -70,14 +70,14 @@ n=1
 # echo $line
 # fi
 # n=$((n+1))
-# done < $filename
-line=$(awk -F 'build_id=' '{print $2}' output.xml)
-echo $line
+# # done < $filename
+# line=$(awk -F 'build_id=' '{print $2}' output.xml)
+# echo $line
 # l=$(xmllint --version)
 # # xpath 'string(/buildinfo/build)' output.xml)
 # echo $l
 myvar=$(xmllint --xpath 'string(//buildinfo/build/@build_id)' output.xml)
-echo "result=",$myvar
+echo "result="$myvar
 #cat $filename | grep 'build_id='
 
 
