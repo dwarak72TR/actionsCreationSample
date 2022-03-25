@@ -89,7 +89,7 @@ score=$(xmllint --xpath 'string(//summaryreport/static-analysis/@score)' summary
 echo "Score = $score"
 }       
 
-if [ $api_call_name == "getbuildinfo" ] 
+if [ $api_call_name -eq "getbuildinfo"] 
 then
  get_build
 else 
