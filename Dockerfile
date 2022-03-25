@@ -1,4 +1,7 @@
-FROM dwaraks/testveracode:v4
+FROM openjdk:latest
+
+RUN apt update -qq
+RUN apt install -y libxml2-utils
 
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
