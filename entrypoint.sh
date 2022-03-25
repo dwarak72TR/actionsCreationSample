@@ -93,7 +93,6 @@ sed -i s+"xmlns=\".*\""+" "+g summaryreport.xml
 score=$(xmllint --xpath 'string(//summaryreport/static-analysis/@score)' summaryreport.xml)
 echo "Score = $score"
 
-
 }       
 
 if [ $api_call_name = "getbuildinfo" ]
@@ -108,3 +107,5 @@ get_build
 build_id=$?
 get_score $build_id
 fi
+
+echo "Done....."
