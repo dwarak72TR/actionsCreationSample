@@ -62,6 +62,9 @@ sed -i s+"xmlns=\"https://analysiscenter.veracode.com/schema/4.0/buildinfo\""+" 
 build_id=$(xmllint --xpath 'string(//buildinfo/@build_id)' output.xml)
 echo "Build_id = $build_id"
 
+status=$(xmllint --xpath 'string(//analysis_unit/@status)' output.xml)
+echo "Status: $status"
+
 pwd
 filepath="summaryreport.xml"
 echo "#!/bin/sh -l" > getscore.sh
@@ -73,11 +76,12 @@ chmod 777 getscore.sh
 cat getscore.sh
 ./getscore.sh 
 ls -lrt
-cat summaryreport.xml
+# cat summaryreport.xml
 
-sed -i s+"xmlns="https://www.veracode.com/schema/reports/export/1.0"\""+" "+g summaryreport.xml
+sed -i s+"xmlns=\"https://www.veracode.com/schema/reports/export/1.0\""+" "+g summaryreport.xml
 score=$(xmllint --xpath 'string(//summaryreport/static-analysis/@score)' summaryreport.xml)
-echo $score
+echo "Score = $score"
+
 # echo "before"
 # cat output2.xml
 # sed -i s+"</buildinfo>"+" "+g output2.xml
