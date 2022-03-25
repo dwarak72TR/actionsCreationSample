@@ -48,7 +48,7 @@ echo ""
 echo "java -jar VeracodeJavaAPI.jar \\
         -vid \"$vid\" \\
         -vkey \"$vkey\" \\
-        -action \"$api_call_name\" \\
+        -action \"getbuildinfo\" \\
         -appid \"$appid\" \\ " >> getbuildid.sh
 
 chmod 777 getbuildid.sh
@@ -89,5 +89,9 @@ score=$(xmllint --xpath 'string(//summaryreport/static-analysis/@score)' summary
 echo "Score = $score"
 }       
 
-
-get_build
+if [ $api_call_name == "getbuildinfo" ] 
+then
+ get_build
+else 
+ echo "still working on it"
+fi
