@@ -73,7 +73,8 @@ n=1
 # done < $filename
 line=$(awk -F 'build_id=' '{print $2}' output.xml)
 echo $line
-l=$(xmllint --xpath 'string(/buildinfo/build)' output.xml)
+l=$(xmllint --version)
+# xpath 'string(/buildinfo/build)' output.xml)
 echo $l
 
 #cat $filename | grep 'build_id='
