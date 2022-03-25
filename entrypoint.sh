@@ -55,16 +55,17 @@ curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vos
 chmod 777 getbuildid.sh
 cat getbuildid.sh
 ./getbuildid.sh > output.xml
-cat output.xml # build info is saved in output.xml
+ # build info is saved in output.xml
 
 sed -i s+"xmlns=(\".*?\")"+" "+g output.xml
+cat output.xml
 build_id=$(xmllint --xpath 'string(//buildinfo/@build_id)' output.xml)
-echo "Build_id = $build_id"
+echo "Build_id: $build_id"
 
 status=$(xmllint --xpath 'string(//analysis_unit/@status)' output.xml)
 echo "Status: $status"
 
-pwd
+
 filepath="summaryreport.xml"
 echo "#!/bin/sh -l" > getscore.sh
 echo ""
