@@ -69,7 +69,7 @@ echo "java -jar VeracodeJavaAPI.jar \\
         -vkey \"$vkey\" \\
         -action \"summaryreport\" \\
         -buildid \"$build_id\" \\ 
-        -outputfilepath \"$GITHUB_WORKSPACE/summaryreport.xml\" " >> getscore.sh
+        -outputfilepath \"summaryreport.xml\" " >> getscore.sh
 ls -lrt
 chmod 777 getscore.sh
 
