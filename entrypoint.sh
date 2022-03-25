@@ -61,7 +61,7 @@ cat output.xml # build info is saved in output.xml
 res=$(cat output.xml | tail -n +3)
 echo $res > output2.xml
 
-build_id=$(xmllint --noout --xpath 'string(//buildinfo/@build_id)' output.xml)
+build_id=$(xmllint --nsclean --xpath 'string(//buildinfo/@build_id)' output.xml)
 
 # echo "before"
 # cat output2.xml
