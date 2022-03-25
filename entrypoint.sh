@@ -39,26 +39,26 @@ fi
 
 #echo "Application is $appid.But I don't knwo the name.$api_call_name"
 
-echo "#!/bin/sh -l" > runJava.sh
+echo "#!/bin/sh -l" > getbuildid.sh
 echo ""
 echo "java -jar VeracodeJavaAPI.jar \\
         -vid \"$vid\" \\
         -vkey \"$vkey\" \\
         -action \"$api_call_name\" \\
-        -appid \"$appid\" \\ " >> runJava.sh
-
+        -appid \"$appid\" \\ " >> getbuildid.sh
 
 javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/maven-metadata.xml | grep latest |  cut -d '>' -f 2 | cut -d '<' -f 1)
 
 echo "javawrapperversion: $javawrapperversion"
 
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
-chmod 777 runJava.sh
-cat runJava.sh
-./runJava.sh > output.xml
+chmod 777 getbuildid.sh
+cat getbuildid.sh
+./getbuildid.sh > output.xml
 cat output.xml # build info is saved in output.xml
 
-sed -i s+"xmlns=\"https://analysiscenter.veracode.com/schema/4.0/buildinfo\""+" "+g output.xml
+xmlns:(.*?)=(".*?")
+sed -i s+"xmlns=(\".*?\")"+" "+g output.xml
 build_id=$(xmllint --xpath 'string(//buildinfo/@build_id)' output.xml)
 echo "Build_id = $build_id"
 
