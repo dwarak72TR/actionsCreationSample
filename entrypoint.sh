@@ -75,9 +75,12 @@ done < $file
 res=$(cat output.xml | tail -n +3)
 echo $res > output2.xml
 ls -lrt
+echo "before"
 cat output2.xml
 sed -i s+"</buildinfo>"+" "+g output2.xml
-build_id=$(xmllint --xpath 'string(/buildinfo/build/@build_id)' output2.xml)
+echo "after removing"
+cat output2.xml
+build_id=$(xmllint --xpath 'string(//build/@build_id)' output2.xml)
 echo "result="
 echo $build_id
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
