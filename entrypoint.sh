@@ -73,10 +73,11 @@ n=1
 # done < $filename
 line=$(awk -F 'build_id=' '{print $2}' output.xml)
 echo $line
-l=$(xmllint --version)
-# xpath 'string(/buildinfo/build)' output.xml)
-echo $l
-
+# l=$(xmllint --version)
+# # xpath 'string(/buildinfo/build)' output.xml)
+# echo $l
+myvar=$(echo 'cat //buildinfo/build/property[@name="build_id"]/@value' | xmllint --shell output.xml | awk -F'[="]' '!/>/{print $(NF-1)}')
+echo $myvar
 #cat $filename | grep 'build_id='
 
 
