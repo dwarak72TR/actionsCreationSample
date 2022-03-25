@@ -106,5 +106,5 @@ if [ $api_call_name = "getscore" ]
 then
 get_build
 build_id=$?
-getscore $build_id
+get_score $build_id
 fi
