@@ -58,12 +58,7 @@ cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml
 
-myvar=$(xmllint --xpath 'string(//buildinfo/build/@build_id)' output.xml)
-echo "result="
-echo $myvar
-
 file=output.xml
-echo $value
 
 
 file="output.xml" 
@@ -75,6 +70,13 @@ echo "Line No. $i : $line"
 i=$((i+1))  
 done < $file  
 
+
+
+res=$(cat output.xml | tail -n +3 | head -n -4)
+echo $res
+#myvar=$(xmllint --xpath 'string(//buildinfo/build/@build_id)' output.xml)
+# echo "result="
+# echo $myvar
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
 
 # status=$(awk -F 'analysis_type=' '{print $2}' output.xml | tail -c 30)
