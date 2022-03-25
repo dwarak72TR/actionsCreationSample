@@ -71,7 +71,7 @@ n=1
 # fi
 # n=$((n+1))
 # done < $filename
-$line=$(awk -F 'build_id=' '{print $2}' $filename)
+line=$(awk -F 'build_id=' '{print $2}' output.xml)
 echo $line
 
 #cat $filename | grep 'build_id='
