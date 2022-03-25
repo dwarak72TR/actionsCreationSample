@@ -76,7 +76,7 @@ res=$(cat output.xml | tail -n +3)
 echo $res > output2.xml
 ls -lrt
 cat output2.xml
-sed -i  's+"</buildinfo>"+""+g' output2.xml
+sed -i s+"</buildinfo>"+" "+g output2.xml
 build_id=$(xmllint --xpath 'string(/buildinfo/build/@build_id)' output2.xml)
 echo "result="
 echo $build_id
