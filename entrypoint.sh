@@ -58,10 +58,10 @@ cat runJava.sh
 ./runJava.sh > output.xml
 cat output.xml # build info is saved in output.xml
 
-res=$(cat output.xml | tail -n +3)
-echo $res > output2.xml
+sed -i s+"xmlns=\"https://analysiscenter.veracode.com/schema/4.0/buildinfo\""+" "+g output.xml
+build_id=$(xmllint --xpath 'string(//buildinfo/@build_id)' output.xml)
+echo "Build_id =$build_id"
 
-build_id=$(xmllint --nsclean --xpath 'string(//buildinfo/@build_id)' output.xml)
 
 # echo "before"
 # cat output2.xml
@@ -69,8 +69,7 @@ build_id=$(xmllint --nsclean --xpath 'string(//buildinfo/@build_id)' output.xml)
 # echo "after removing"
 # cat output2.xml
 # build_id=$(xmllint --xpath 'string(//build/@build_id)' output2.xml)
-echo "Build_id ="
-echo $build_id
+
 
 
 # build_id=$(awk -F 'build_id=' '{print $2}' output.xml | head -c 11) success
