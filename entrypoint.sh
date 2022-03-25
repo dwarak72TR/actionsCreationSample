@@ -69,9 +69,9 @@ echo "Status: $status"
 #getting version from XML file
 version=$(xmllint --xpath 'string(//buildinfo/build/@version)' output.xml)
 echo "Version: $version"
-}
 
-get_score () { 
+if [ $api_call_name -eq "getscore"] 
+then
 #getting score 
 filepath="summaryreport.xml"
 echo "#!/bin/sh -l" > getscore.sh
@@ -87,11 +87,9 @@ cat getscore.sh
 sed -i s+"xmlns=\".*\""+" "+g summaryreport.xml
 score=$(xmllint --xpath 'string(//summaryreport/static-analysis/@score)' summaryreport.xml)
 echo "Score = $score"
+fi
+
 }       
 
-if [ $api_call_name -eq "getbuildinfo"] 
-then
- get_build
-else 
- echo "still working on it"
-fi
+
+get_build
