@@ -68,11 +68,14 @@ echo "java -jar VeracodeJavaAPI.jar \\
         -vid \"$vid\" \\
         -vkey \"$vkey\" \\
         -action \"summaryreport\" \\
-        -buildid \"$build_id\" \\ " >> getscore.sh
-
+        -buildid \"$build_id\" \\ 
+        -outputfilepath \"summaryreport.xml\" \\" >> getscore.sh
+ls -lrt
 chmod 777 getscore.sh
+
 cat getscore.sh
-./getscore.sh > summaryreport.xml
+./getscore.sh 
+ls -lrt
 cat summaryreport.xml
 # echo "before"
 # cat output2.xml
