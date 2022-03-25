@@ -57,7 +57,6 @@ cat getbuildid.sh
 ./getbuildid.sh > output.xml
 cat output.xml # build info is saved in output.xml
 
-xmlns:(.*?)=(".*?")
 sed -i s+"xmlns=(\".*?\")"+" "+g output.xml
 build_id=$(xmllint --xpath 'string(//buildinfo/@build_id)' output.xml)
 echo "Build_id = $build_id"
