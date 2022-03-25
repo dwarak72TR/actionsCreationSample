@@ -1,7 +1,4 @@
-FROM openjdk:latest
-
-RUN yum install  update -qq
-RUN yum install -y libxml2-utils
+FROM dwaraks/testveracode:v4
 
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
