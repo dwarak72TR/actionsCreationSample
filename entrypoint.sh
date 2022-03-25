@@ -36,7 +36,12 @@ then
         exit 1
 fi
 
-#echo "Application is $appid.But I don't knwo the name.$api_call_name"
+javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/maven-metadata.xml | grep latest |  cut -d '>' -f 2 | cut -d '<' -f 1)
+
+echo "javawrapperversion: $javawrapperversion"
+curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
+
+get_build () {
 
 echo "#!/bin/sh -l" > getbuildid.sh
 echo ""
@@ -46,11 +51,6 @@ echo "java -jar VeracodeJavaAPI.jar \\
         -action \"$api_call_name\" \\
         -appid \"$appid\" \\ " >> getbuildid.sh
 
-javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/maven-metadata.xml | grep latest |  cut -d '>' -f 2 | cut -d '<' -f 1)
-
-echo "javawrapperversion: $javawrapperversion"
-
-curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
 chmod 777 getbuildid.sh
 cat getbuildid.sh
 ./getbuildid.sh > output.xml
@@ -68,8 +68,10 @@ echo "Status: $status"
 
 #getting version from XML file
 version=$(xmllint --xpath 'string(//buildinfo/build/@version)' output.xml)
-echo "Status: $version"
+echo "Version: $version"
+}
 
+get_score () { 
 #getting score 
 filepath="summaryreport.xml"
 echo "#!/bin/sh -l" > getscore.sh
@@ -85,5 +87,7 @@ cat getscore.sh
 sed -i s+"xmlns=\".*\""+" "+g summaryreport.xml
 score=$(xmllint --xpath 'string(//summaryreport/static-analysis/@score)' summaryreport.xml)
 echo "Score = $score"
+}       
 
 
+get_build
