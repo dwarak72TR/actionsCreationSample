@@ -69,8 +69,8 @@ echo "Status: $status"
 #getting version from XML file
 version=$(xmllint --xpath 'string(//buildinfo/build/@version)' output.xml)
 echo "Version: $version"
-
-if [ $api_call_name -eq "getscore"] 
+checkscore = "getscore"
+if [ $api_call_name -eq $checkscore ] 
 then
 #getting score 
 filepath="summaryreport.xml"
