@@ -62,17 +62,17 @@ sed -i s+"xmlns=\"https://analysiscenter.veracode.com/schema/4.0/buildinfo\""+" 
 build_id=$(xmllint --xpath 'string(//buildinfo/@build_id)' output.xml)
 echo "Build_id = $build_id"
 
-echo "#!/bin/sh -l" > runJava.sh
+echo "#!/bin/sh -l" > getscore.sh
 echo ""
 echo "java -jar VeracodeJavaAPI.jar \\
         -vid \"$vid\" \\
         -vkey \"$vkey\" \\
         -action \"summaryreport\" \\
-        -buildid \"$build_id\" \\ " >> runJava.sh
+        -buildid \"$build_id\" \\ " >> getscore.sh
 
-chmod 777 runJava2.sh
-cat runJava2.sh
-./runJava2.sh > summaryreport.xml
+chmod 777 getscore.sh
+cat getscore.sh
+./getscore.sh > summaryreport.xml
 cat summaryreport.xml
 # echo "before"
 # cat output2.xml
