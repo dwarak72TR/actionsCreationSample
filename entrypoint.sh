@@ -73,8 +73,9 @@ done < $file
 
 
 res=$(cat output.xml | tail -n +3)
-echo $res
-
+echo $res > output2.xml
+ls -lrt
+cat output2.xml
 # myvar=$(xmllint --xpath 'string(//build/@build_id)' output2.xml)
 # echo "result="
 # echo $myvar
